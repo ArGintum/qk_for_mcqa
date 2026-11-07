@@ -1,1 +1,1 @@
-This folder contains datasets used in our experiments. These are versions of the previously existing datasets, in which questions are expanded with "uncertainty-sink" options "E. None of the above." and "F. I don't know.".
+This folder contains datasets used in our experiments. These are versions of the previously existing datasets, in which questions are expanded with "uncertainty-sink" options "E. None of the above." and "F. I don't know." with some minor fixes (enforcement of the point at the end of option texts).
