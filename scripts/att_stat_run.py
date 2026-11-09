@@ -6,7 +6,7 @@ import re
 import argparse
 from tqdm import tqdm
 import torch
-from transformers import LlamaTokenizer, LlamaForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM
 import os
 import pickle
 from prompt import *
@@ -28,14 +28,14 @@ args = parser.parse_args()
 
 BASE_DIR = '../'
 STORAGE_DIR = BASE_DIR + "cache/"
-MODEL_NAME = parser.model
+MODEL_NAME = args.model
 FILE_SAVE_NAME = MODEL_NAME.split("/")[-1]
 
-model = LlamaForCausalLM.from_pretrained(MODEL_NAME, #"meta-llama/Llama-2-7b-hf",
+model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, #"meta-llama/Llama-2-7b-hf",
                                          torch_dtype=torch.float16,
                                          output_attentions=True
                                         )
-tokenizer = LlamaTokenizer.from_pretrained(MODEL_NAME,#"meta-llama/Llama-2-7b-hf",
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME,#"meta-llama/Llama-2-7b-hf",
                                         )
 
 LAYER_NUM = model.config.num_hidden_layers
