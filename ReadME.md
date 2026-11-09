@@ -71,7 +71,8 @@ qk_for_mcqa/
 
 ```bash
 git clone https://https://github.com/ArGintum/qk_for_mcqa.git
-cd 
+cd qk_for_mcqa
+mkdir cache
 ```
 
 ### 2. Prepare the auxiliary folders
