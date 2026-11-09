@@ -34,7 +34,7 @@ Across 24 models from 1.5B to 72B parameters (LLaMA-2/3/3.1/3.3, Qwen-2.5, Gemma
 
 ```
 qk_for_mcqa/
-├── data/                                                             # Datasets storage
+├── data/                                          # Datasets storage
 │   ├── synthetic_QA/															 # Synthetic dataset (Section 6.1)
 │   │   ├── synthetic_QA_2_plus_additional_options_200_examples.json
 │   │   ├── synthetic_QA_4_plus_additional_options_200_examples.json
@@ -46,7 +46,20 @@ qk_for_mcqa/
 │   ├── halu_dialogue_10k.json
 │   ├── hellaswag_10k.json
 │   └── mmlu_10k.json
-├── Scripts/                                                            # Scripts for auxiliary experiments
+├── scripts/                        # Scripts for baselines and auxiliary experiments
+│   ├── att_stat_run.py             # Test different option-representative tokens for attention baseline
+│   ├── get_pride_preditions.py     # Reproduce the results for PriDe baseline
+│   ├── get_logit_lens.py           # Reproduce the Logit Lens experiment
+│   ├── heads_ablation.py           # Reproduce the head ablation experiment (section 7.3) - QK-selected heads
+│   ├── heads_ablation_random.py    # Reproduce the head ablation experiment (section 7.3) - random control
+│   ├── prompt.py                   # Sets of in-context examples for experiments
+│   ├── qk_stat_run.py              # Test different option-representative tokens for QK-score
+│   ├── utils.py
+│   └── utils_debias.py
+├── Example_main_experiments.ipynb  # Notebook with code to reproduce our main experiments
+├── utils_main.py 
+├── prompt.py                       # Sets of in-context examples for the main experiments
+├── qk_mcqa_scheme.png
 ├── requirements.txt
 ├── LICENSE
 └── README.md
