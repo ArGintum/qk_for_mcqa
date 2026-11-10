@@ -24,6 +24,14 @@ LLMs often possess the internal knowledge to answer correctly to a multiple-choi
 - Our results support the hypothesis that **semantic representations are encoded in specific heads** in the query, key, and value vectors of a phrase's final tokens (namely, end-of-sentence or end-of-line tokens), as observed in previous studies;
 - We analyse the attention patterns of *select-and-copy* heads and their behaviour under different conditions, **advancing our understanding of how attention mechanism** can work as ``select and copy'' operation, and how LLMs function in general.
 
+[![Our method calculates the Query-Key score (dot product of the corresponding vectors before application of positional embeddings) between the end-of-line token of an answer option and the last token of the prompt for the designated head, from which we derive the answer.](images/qk_mcqa_scheme.png)](images/qk_mcqa_scheme.png)
+
+Our method calculates the Query-Key score between the end-of-line token of answer option \#i ($d_i$) and the last token of the prompt for the designated head, from which we derive the answer. 
+
+$$
+S^{(l, h)}_{QK} (d_i) =  \vq_{N}^{(l, h) \top} \vk^{(l, h)}_{t_i}  \quad  i \in \{1, 2,...,n\} 
+$$
+
 ## Abstract 
 
 Large language models (LLMs) routinely fail to output the correct option in multiple-choice question answering (MCQA) while encoding the answer internally. We expose this latent knowledge via the Query--Key (QK) score, defined for an attention head as the inner product between the last-token query and the key at the end-of-line token following option $i$, evaluated before rotary positional embedding is applied. Its argmax identifies a universal class of select-and-copy heads in middle layers that perform option selection through semantic query--key alignment, mechanistically distinct from induction and copy-suppression heads (Olsson et al., 2022): they are invariant to label symbols, and solve a synthetic task with zero surface overlap---properties no positional-copy account explains and that critically require stripping RoPE.
